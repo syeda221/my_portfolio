@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,15 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Syeda Qunoot Zehra</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Baskervville:ital,wght@0,400..700;1,400..700&family=Bungee&family=Cabin:ital,wght@0,400..700;1,400..700&family=Cinzel:wght@400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <style>
     body {
       margin: 0;
       padding: 0;
-  font-family: "Montserrat", sans-serif;
+      font-family: "Montserrat", sans-serif;
       background: #ffffff;
       color: #000000;
       transition: 0.3s;
@@ -54,6 +55,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 0 20px;
     }
     .nav-links {
       display: flex;
@@ -71,10 +73,26 @@
       transition: all 0.3s ease;
     }
     .nav-links a:hover {
-      background: rgba(255, 204, 0, 0.2);
+      background: rgba(255, 145, 0, 0.2);
     }
     .dark-mode .nav-links a:hover {
-      background: rgba(255, 204, 0, 0.3);
+      background: rgba(255, 145, 0, 0.3);
+    }
+    
+    /* Mobile Menu Button */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 5px;
+    }
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: currentColor;
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
     }
     
     /* Theme Toggle */
@@ -100,7 +118,7 @@
     
     /* Section Styles */
     section {
-      padding: 20px 20px 30px;
+      padding: 100px 20px 80px;
       max-width: 1000px;
       margin: 0 auto;
     }
@@ -129,7 +147,7 @@
       align-items: center;
       min-height: 100vh;
       text-align: center;
-      /* padding-top: 80px; */
+      padding-top: 80px;
     }
     .hero h1 {
       font-size: 4rem;
@@ -178,7 +196,7 @@
     .dark-mode .skill-category {
       background: rgba(255, 255, 255, 0.05);
     }
-    .H{
+    .H, .F-H {
       font-size: 1.5rem;
       margin-bottom: 35px;
       color: #da7b00;
@@ -197,12 +215,6 @@
     }
     .skill-list li:last-child {
       border-bottom: none;
-    }
-    .F-H{
-        margin-bottom:15px;
-         font-size: 1.5rem;
-    
-      color: #da7b00;
     }
     
     /* Education Section */
@@ -226,6 +238,8 @@
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 15px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     .education-title {
       font-size: 1.4rem;
@@ -238,6 +252,7 @@
       border-radius: 20px;
       font-size: 0.9rem;
       font-weight: bold;
+      white-space: nowrap;
     }
     .education-institution {
       font-size: 1.1rem;
@@ -255,6 +270,61 @@
       font-size: 0.9rem;
       opacity: 0.7;
     }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 15px;
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      
+      .dark-mode .nav-links {
+        background: rgba(18, 18, 18, 0.95);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      }
+      
+      .nav-links.active {
+        transform: translateY(0);
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+      
+      section {
+        padding: 80px 15px 60px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .icons a {
+        margin: 0 10px;
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -263,7 +333,12 @@
   <!-- Navigation -->
   <nav>
     <div class="nav-container">
-      <ul class="nav-links">
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -289,124 +364,110 @@
     </div>
   </section>
 
- 
-  
+  <!-- About Section -->
   <section id="about">
-  <h2>About Me</h2>
-  <div class="about-content">
-    <p>
-      Hi, I’m <strong>Syeda Qunoot Zehra</strong>, a motivated <strong>Front-End Developer</strong> 
-      with skills in HTML, CSS, JavaScript, Bootstrap, and jQuery. I am currently pursuing my 
-      <strong>ACCP-AI Diploma</strong> at Aptech Defence Center and continuously improving my expertise 
-      in modern web technologies.
-    </p>
-    <p>
-      I have a strong passion for building responsive, user-friendly, and visually appealing websites. 
-      I enjoy turning creative ideas into reality through clean and maintainable code, while also 
-      exploring design tools like Canva to enhance my projects.
-    </p>
-    <p>
-      Beyond coding, I enjoy learning new technologies and design trends that help me grow as a developer. 
-      I am always eager to collaborate on exciting projects, share ideas, and create impactful digital experiences.
-    </p>
-  </div>
-</section>
+    <h2>About Me</h2>
+    <div class="about-content">
+      <p>
+        Hi, I’m <strong>Syeda Qunoot Zehra</strong>, a motivated <strong>Front-End Developer</strong> 
+        with skills in HTML, CSS, JavaScript, Bootstrap, and jQuery. I am currently pursuing my 
+        <strong>ACCP-AI Diploma</strong> at Aptech Defence Center and continuously improving my expertise 
+        in modern web technologies.
+      </p>
+      <p>
+        I have a strong passion for building responsive, user-friendly, and visually appealing websites. 
+        I enjoy turning creative ideas into reality through clean and maintainable code, while also 
+        exploring design tools like Canva to enhance my projects.
+      </p>
+      <p>
+        Beyond coding, I enjoy learning new technologies and design trends that help me grow as a developer. 
+        I am always eager to collaborate on exciting projects, share ideas, and create impactful digital experiences.
+      </p>
+    </div>
+  </section>
 
-
-
- 
+  <!-- Skills Section -->
   <section id="skills">
-  <h2>Skills</h2>
-  <div class="skills-container">
-    
-    <div class="skill-category skills-F">
-      <h3 class="F-H">Frontend Development</h3>
-      <ul class="skill-list">
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>Bootstrap (Framework)</li>
+    <h2>Skills</h2>
+    <div class="skills-container">
+      <div class="skill-category skills-F">
+        <h3 class="F-H">Frontend Development</h3>
+        <ul class="skill-list">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>Bootstrap (Framework)</li>
+        </ul>
+      </div>
       
-      </ul>
+      <div class="skill-category">
+        <h3 class="H">Tools & Technologies</h3>
+        <ul class="skill-list">
+          <li>Canva</li>
+          <li>MS Office</li>
+          <li>VS Code</li>
+          <li>Git & GitHub</li>
+        </ul>
+      </div>
+      
+      <div class="skill-category">
+        <h3 class="H">Soft Skills</h3>
+        <ul class="skill-list">
+          <li>Problem Solving</li>
+          <li>Communication</li>
+          <li>Time Management</li>
+          <li>Adaptability</li>
+        </ul>
+      </div>
     </div>
-    
-    <div class="skill-category">
-      <h3 class="H">Tools & Technologies</h3>
-      <ul class="skill-list">
-        <li>Canva</li>
-        <li>MS Office</li>
-        <li>VS Code</li>
-        <li>Git & GitHub</li>
-    
-      </ul>
-    </div>
-    
-    <div class="skill-category">
-      <h3 class="H">Soft Skills</h3>
-      <ul class="skill-list">
-     <li>Problem Solving</li>
-        <li>Communication</li>
-        <li>Time Management</li>
-        <li>Adaptability</li>
-
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-
- 
+  </section>
 
   <!-- Education Section -->
-<section id="education">
-  <h2>Education</h2>
-  <div class="education-container">
-    
-    <div class="education-item">
-      <div class="education-header">
-        <div>
-          <div class="education-title">Software Engineering Diploma</div>
-          <div class="education-institution">Aptech Defence Center</div>
+  <section id="education">
+    <h2>Education</h2>
+    <div class="education-container">
+      <div class="education-item">
+        <div class="education-header">
+          <div>
+            <div class="education-title">Software Engineering Diploma</div>
+            <div class="education-institution">Aptech Defence Center</div>
+          </div>
+          <div class="education-year">2025 - Present</div>
         </div>
-        <div class="education-year">2025 - Present</div>
+        <div class="education-description">
+          <p>Currently pursuing a 36-month Advance diploma in <strong>Software Engineering</strong>. 
+          Gaining hands-on knowledge in front-end development, programming fundamentals, and emerging technologies in AI.</p>
+          <p><strong>Status:</strong> Currently in 2nd Semester.</p>
+        </div>
       </div>
-      <div class="education-description">
-        <p>Currently pursuing a 36-month Advance diploma in <strong>Software Engineering</strong>. 
-        Gaining hands-on knowledge in front-end development, programming fundamentals, and emerging technologies in AI.</p>
-        <p><strong>Status:</strong> Currently in 2nd Semester.</p>
+      
+      <div class="education-item">
+        <div class="education-header">
+          <div>
+            <div class="education-title">Higher Secondary Certificate (HSC)</div>
+            <div class="education-institution">Shah Latif Govt. College</div>
+          </div>
+          <div class="education-year">Present</div>
+        </div>
+        <div class="education-description">
+          <p>Enrolled in the <strong>Computer Science Group</strong>, focusing on core subjects in computing and mathematics.</p>
+        </div>
+      </div>
+      
+      <div class="education-item">
+        <div class="education-header">
+          <div>
+            <div class="education-title">Secondary School Certificate (SSC)</div>
+            <div class="education-institution">Anees Hassan School & College</div>
+          </div>
+          <div class="education-year">2023 - 2025</div>
+        </div>
+        <div class="education-description">
+          <p>Completed studies in the <strong>Biology Group</strong> with an overall score of <strong>81% in SSC</strong>.</p>
+        </div>
       </div>
     </div>
-    
-    <div class="education-item">
-      <div class="education-header">
-        <div>
-          <div class="education-title">Higher Secondary Certificate (HSC)</div>
-          <div class="education-institution">Shah Latif Govt. College</div>
-        </div>
-        <div class="education-year">Present</div>
-      </div>
-      <div class="education-description">
-        <p>Enrolled in the <strong>Computer Science Group</strong>, focusing on core subjects in computing and mathematics.</p>
-      </div>
-    </div>
-    
-    <div class="education-item">
-      <div class="education-header">
-        <div>
-          <div class="education-title">Secondary School Certificate (SSC)</div>
-          <div class="education-institution">Anees Hassan School & College</div>
-        </div>
-        <div class="education-year">2023 - 2025</div>
-      </div>
-      <div class="education-description">
-        <p>Completed studies in the <strong>Biology Group</strong> with an overall score of <strong>81% in SSC </strong>.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
+  </section>
 
   <!-- Footer -->
   <footer>
@@ -446,12 +507,42 @@
       }
     }
 
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      
+      // Animate hamburger to X
+      const spans = menuToggle.querySelectorAll('span');
+      if (navLinks.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        spans[0].style.transform = 'rotate(0deg)';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'rotate(0deg)';
+      }
+    });
+
     // Smooth scrolling for navigation links
     document.querySelectorAll('nav a').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         const targetElement = document.querySelector(targetId);
+        
+        // Close mobile menu if open
+        if (navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          const spans = menuToggle.querySelectorAll('span');
+          spans[0].style.transform = 'rotate(0deg)';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'rotate(0deg)';
+        }
+        
         window.scrollTo({
           top: targetElement.offsetTop - 80,
           behavior: 'smooth'
@@ -461,3 +552,4 @@
   </script>
 </body>
 </html>
+```
