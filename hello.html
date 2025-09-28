@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Syeda Qunoot Zehra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Baskervville:ital,wght@0,400..700;1,400..700&family=Bungee&family=Cabin:ital,wght@0,400..700;1,400..700&family=Cinzel:wght@400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+  font-family: "Montserrat", sans-serif;
+      background: #ffffff;
+      color: #000000;
+      transition: 0.3s;
+      position: relative;
+    }
+    .dark-mode {
+      background: #121212;
+      color: #ffffff;
+    }
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+    
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .dark-mode nav {
+      background: rgba(18, 18, 18, 0.9);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover {
+      background: rgba(255, 204, 0, 0.2);
+    }
+    .dark-mode .nav-links a:hover {
+      background: rgba(255, 204, 0, 0.3);
+    }
+    
+    /* Theme Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+      z-index: 1001;
+    }
+    .dark-mode .theme-toggle {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Section Styles */
+    section {
+      padding: 20px 20px 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      text-align: center;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #ff9100;
+    }
+    
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      /* padding-top: 80px; */
+    }
+    .hero h1 {
+      font-size: 4rem;
+      margin: 10px 0;
+    }
+    .hero h3 {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+    .icons {
+      margin-top: 30px;
+    }
+    .icons a {
+      margin: 0 15px;
+      font-size: 2rem;
+      color: inherit;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .icons a:hover {
+      transform: scale(1.2);
+    }
+    
+    /* About Section */
+    .about-content {
+      line-height: 1.7;
+      font-size: 1.1rem;
+    }
+    .about-content p {
+      margin-bottom: 20px;
+    }
+    
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .skill-category {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+    }
+    .dark-mode .skill-category {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .H{
+      font-size: 1.5rem;
+      margin-bottom: 35px;
+      color: #da7b00;
+    }
+    .skill-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .skill-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .dark-mode .skill-list li {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .skill-list li:last-child {
+      border-bottom: none;
+    }
+    .F-H{
+        margin-bottom:15px;
+         font-size: 1.5rem;
+    
+      color: #da7b00;
+    }
+    
+    /* Education Section */
+    .education-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .education-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+    }
+    .dark-mode .education-item {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .education-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    .education-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+    .education-year {
+      background: #ff9100;
+      color: #000;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+    .education-institution {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #ff9100;
+    }
+    .education-description {
+      line-height: 1.6;
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="theme-toggle" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h1>Syeda Qunoot Zehra</h1>
+    <h3>Frontend Developer & Student</h3>
+
+    <div class="icons">
+      <a href="https://github.com/syeda221" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/qunoot-zehra-04454b361/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="CV.pdf" download><i class="fas fa-file-alt"></i></a>
+      <a href="mailto:qunootzehra21@gmail.com"><i class="fas fa-paper-plane"></i></a>
+    </div>
+  </section>
+
+ 
+  
+  <section id="about">
+  <h2>About Me</h2>
+  <div class="about-content">
+    <p>
+      Hi, I’m <strong>Syeda Qunoot Zehra</strong>, a motivated <strong>Front-End Developer</strong> 
+      with skills in HTML, CSS, JavaScript, Bootstrap, and jQuery. I am currently pursuing my 
+      <strong>ACCP-AI Diploma</strong> at Aptech Defence Center and continuously improving my expertise 
+      in modern web technologies.
+    </p>
+    <p>
+      I have a strong passion for building responsive, user-friendly, and visually appealing websites. 
+      I enjoy turning creative ideas into reality through clean and maintainable code, while also 
+      exploring design tools like Canva to enhance my projects.
+    </p>
+    <p>
+      Beyond coding, I enjoy learning new technologies and design trends that help me grow as a developer. 
+      I am always eager to collaborate on exciting projects, share ideas, and create impactful digital experiences.
+    </p>
+  </div>
+</section>
+
+
+
+ 
+  <section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-container">
+    
+    <div class="skill-category skills-F">
+      <h3 class="F-H">Frontend Development</h3>
+      <ul class="skill-list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Bootstrap (Framework)</li>
+      
+      </ul>
+    </div>
+    
+    <div class="skill-category">
+      <h3 class="H">Tools & Technologies</h3>
+      <ul class="skill-list">
+        <li>Canva</li>
+        <li>MS Office</li>
+        <li>VS Code</li>
+        <li>Git & GitHub</li>
+    
+      </ul>
+    </div>
+    
+    <div class="skill-category">
+      <h3 class="H">Soft Skills</h3>
+      <ul class="skill-list">
+     <li>Problem Solving</li>
+        <li>Communication</li>
+        <li>Time Management</li>
+        <li>Adaptability</li>
+
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Education Section
+  <section id="education">
+    <h2>Education</h2>
+    <div class="education-container">
+      <div class="education-item">
+        <div class="education-header">
+          <div>
+            <div class="education-title">Bachelor of Science in Computer Science</div>
+            <div class="education-institution">University of Technology</div>
+          </div>
+          <div class="education-year">2022 - 2026</div>
+        </div>
+        <div class="education-description">
+          <p>Currently pursuing a Bachelor's degree in Computer Science with a focus on web development and software engineering. 
+          Maintaining a GPA of 3.8/4.0 with coursework in Data Structures, Algorithms, Database Systems, and Web Technologies.</p>
+          <p><strong>Relevant Coursework:</strong> Web Development, Object-Oriented Programming, Computer Networks, 
+          Human-Computer Interaction, Software Engineering Principles.</p>
+        </div>
+      </div>
+      
+      <div class="education-item">
+        <div class="education-header">
+          <div>
+            <div class="education-title">Web Development Certification</div>
+            <div class="education-institution">FreeCodeCamp</div>
+          </div>
+          <div class="education-year">2023</div>
+        </div>
+        <div class="education-description">
+          <p>Completed comprehensive certification program covering responsive web design, JavaScript algorithms and data structures, 
+          front-end libraries, and APIs with microservices.</p>
+          <p><strong>Projects Completed:</strong> Personal Portfolio, JavaScript Calculator, Pomodoro Clock, 
+          Local Weather App, Wikipedia Viewer, and Tic Tac Toe game.</p>
+        </div>
+      </div>
+      
+      <div class="education-item">
+        <div class="education-header">
+          <div>
+            <div class="education-title">Advanced HTML & CSS Course</div>
+            <div class="education-institution">Coursera</div>
+          </div>
+          <div class="education-year">2022</div>
+        </div>
+        <div class="education-description">
+          <p>Mastered advanced CSS concepts including CSS Grid, Flexbox, animations, transitions, and responsive design principles. 
+          Learned modern CSS methodologies and best practices for scalable and maintainable code.</p>
+          <p><strong>Key Topics:</strong> CSS Architecture, Preprocessors (SASS), CSS-in-JS, Performance Optimization, 
+          Cross-browser Compatibility.</p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+
+  <!-- Education Section -->
+<section id="education">
+  <h2>Education</h2>
+  <div class="education-container">
+    
+    <div class="education-item">
+      <div class="education-header">
+        <div>
+          <div class="education-title">Software Engineering Diploma</div>
+          <div class="education-institution">Aptech Defence Center</div>
+        </div>
+        <div class="education-year">2025 - Present</div>
+      </div>
+      <div class="education-description">
+        <p>Currently pursuing a 36-month Advance diploma in <strong>Software Engineering</strong>. 
+        Gaining hands-on knowledge in front-end development, programming fundamentals, and emerging technologies in AI.</p>
+        <p><strong>Status:</strong> Currently in 2nd Semester.</p>
+      </div>
+    </div>
+    
+    <div class="education-item">
+      <div class="education-header">
+        <div>
+          <div class="education-title">Higher Secondary Certificate (HSC)</div>
+          <div class="education-institution">Shah Latif Govt. College</div>
+        </div>
+        <div class="education-year">Present</div>
+      </div>
+      <div class="education-description">
+        <p>Enrolled in the <strong>Computer Science Group</strong>, focusing on core subjects in computing and mathematics.</p>
+      </div>
+    </div>
+    
+    <div class="education-item">
+      <div class="education-header">
+        <div>
+          <div class="education-title">Secondary School Certificate (SSC)</div>
+          <div class="education-institution">Anees Hassan School & College</div>
+        </div>
+        <div class="education-year">2023 - 2025</div>
+      </div>
+      <div class="education-description">
+        <p>Completed studies in the <strong>Biology Group</strong> with an overall score of <strong>81% in SSC </strong>.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Syeda Qunoot Zehra. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Particles.js config
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#ffcc00" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5 },
+        "size": { "value": 3 },
+        "line_linked": { "enable": true, "color": "#999999" },
+        "move": { "enable": true, "speed": 3 }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" }
+        }
+      },
+      "retina_detect": true
+    });
+
+    // Theme Toggle
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+      const icon = document.querySelector('.theme-toggle i');
+      if (document.body.classList.contains("dark-mode")) {
+        icon.className = "fas fa-sun";
+      } else {
+        icon.className = "fas fa-moon";
+      }
+    }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
